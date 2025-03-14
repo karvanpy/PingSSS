@@ -30,7 +30,7 @@ uvx pingsss
 
 PingSSS is easy to use with straightforward commands. Here's a basic example:
 ```
-ping-tool 192.168.100.1-20 --output json --show alive
+pingsss 192.168.100.1-20 --output json --show alive
 ```
 
 This command will ping the IP range 192.168.100.1 to 192.168.100.20, output the results in JSON format, and display only the alive hosts.
