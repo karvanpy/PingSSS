@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PingSSS - Ping multiple hosts concurrently for network diagnostics and testing.">
+    <meta property="og:title" content="PingSSS - CLI Tool for Network Diagnostics">
+    <meta property="og:description" content="Ping multiple hosts concurrently - perfect for network diagnostics and testing.">
+    <meta property="og:url" content="https://pypi.org/project/ping-tool/">
+    <title>PingSSS - CLI Tool for Network Diagnostics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@100..700&display=swap">
+    <style>
+        body {
+            font-family: 'Instrument Sans', sans-serif;
+            color: #333;
+        }
+        code {
+            font-family: 'IBM Plex Mono', monospace;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-12 text-center fade-in">
+        <section>
+            <h1 class="text-5xl font-bold">PingSSS</h1>
+            <div class="mt-2 flex justify-center space-x-4">
+                <a href="https://pypi.org/project/pingsss/" class="hover:scale-105 transition-transform">
+                    <img src="https://img.shields.io/pypi/v/pingsss" alt="PyPI - Version">
+                </a>
+                <a href="https://opensource.org/licenses/MIT" class="hover:scale-105 transition-transform">
+                    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+                </a>
+                <a href="https://pypi.org/project/pingsss/" class="hover:scale-105 transition-transform">
+                    <img src="https://img.shields.io/pypi/pyversions/pingsss" alt="Python Versions">
+                </a>
+            </div>
+            <p class="mt-2 text-lg text-gray-600">Ping multiple hosts concurrently - perfect for network diagnostics and testing.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="https://pypi.org/project/pingsss/" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded text-white hover:scale-105 transition-transform">Install Now</a>
+                <a href="https://github.com/karvanpy/pingsss" class="border border-gray-700 px-6 py-3 rounded text-gray-700 hover:bg-gray-200 hover:scale-105 transition-transform">GitHub</a>
+            </div>
+            <div class="mt-6">
+                <a href="https://asciinema.org/a/708104" target="_blank">
+                    <img src="https://asciinema.org/a/708104.svg" class="mx-auto" alt="PingSSS Demo">
+                </a>
+            </div>
+        </section>
+
+        <section class="mt-12 text-left border border-gray-300 rounded-lg p-6">
+            <h2 class="text-2xl font-bold">Installation</h2>
+            <div class="bg-gray-100 p-6 rounded-lg shadow-md mt-4">
+                <p class="text-gray-800 font-medium">Install the package via pip:</p>
+                <div class="relative bg-white p-4 rounded-lg border border-gray-300 mt-2 text-sm flex justify-between items-center">
+                    <code id="install-command-pip">pip install pingsss</code>
+                    <button id="copy-button-pip" class="text-gray-500 hover:text-gray-700" onclick="copyToClipboard('install-command-pip', 'copy-button-pip')" aria-label="Copy to clipboard">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-lg shadow-md mt-4">
+                <p class="text-gray-800 font-medium">Run without installation via uvx:</p>
+                <div class="relative bg-white p-4 rounded-lg border border-gray-300 mt-2 text-sm flex justify-between items-center">
+                    <code id="install-command-uvx">uvx pingsss</code>
+                    <button id="copy-button-uvx" class="text-gray-500 hover:text-gray-700" onclick="copyToClipboard('install-command-uvx', 'copy-button-uvx')" aria-label="Copy to clipboard">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12 grid md:grid-cols-2 gap-6 text-left border border-gray-300 rounded-lg p-6">
+            <div class="p-6 bg-white shadow-lg rounded-lg border border-transparent hover:border-gray-300 transition-colors duration-300">
+                <h2 class="text-xl font-semibold">Concurrent Pinging</h2>
+                <p class="text-gray-600">Ping multiple hosts simultaneously to save time.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg border border-transparent hover:border-gray-300 transition-colors duration-300">
+                <h2 class="text-xl font-semibold">IP Range Parsing</h2>
+                <p class="text-gray-600">Easily parse and ping a range of IP addresses.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg border border-transparent hover:border-gray-300 transition-colors duration-300">
+                <h2 class="text-xl font-semibold">Filter Results</h2>
+                <p class="text-gray-600">Show only alive or dead hosts based on your preference.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg border border-transparent hover:border-gray-300 transition-colors duration-300">
+                <h2 class="text-xl font-semibold">JSON Output</h2>
+                <p class="text-gray-600">Save the results in JSON format for further analysis.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg border border-transparent hover:border-gray-300 transition-colors duration-300">
+                <h2 class="text-xl font-semibold">Robust Error Handling</h2>
+                <p class="text-gray-600">Gracefully handle errors and edge cases during execution.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId, buttonId) {
+            const copyText = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(copyText).then(() => {
+                // Change the button text to "Copied"
+                const button = document.getElementById(buttonId);
+                button.innerText = "Copied";
+                // Optionally, revert the text back to the original after a short delay
+                setTimeout(() => {
+                    button.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                    `;
+                }, 2000); // Revert after 2 seconds
+            });
+        }
+    </script>
+
+</body>
+</html>

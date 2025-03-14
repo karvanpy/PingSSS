@@ -1,0 +1,25 @@
+# setup.py
+from setuptools import setup
+
+setup(
+    name='pingsss',
+    version='1.2',
+    packages=['pingsss'],
+    install_requires=['colorama','ipaddress'],
+    entry_points={
+        'console_scripts': [
+            'pingsss = pingsss.pingsss:main',
+        ],
+    },
+    author='Ervan Kurniawan',
+    author_email='ervankurniawan41@gmail.com',
+    description='A tool to ping multiple hosts concurrently.',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
+    url='https://github.com/karvanpy/pingsss',
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+    ],
+)

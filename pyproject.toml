@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pingsss"
+version = "0.0.2"
+description = "A tool to ping multiple hosts concurrently"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    { name = "Ervan Kurniawan", email = "ervankurniawan41@gmail.com" },
+]
+dependencies = [
+    "colorama",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Utilities",
+]
+
+[project.scripts]
+pingsss = "pingsss.pingsss:main"
+
+[project.urls]
+Homepage = "https://github.com/karvanpy/PingSSS"
+Issues = "https://github.com/karvanpy/PingSSS/issues"
+
+[tool.setuptools]
+packages = ["pingsss"]
+package-dir = { "" = "src" }
